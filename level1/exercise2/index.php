@@ -2,9 +2,9 @@
 
 class PowerfulComputer
 {
-	public $memorySize;
-	public $frequencyCpu;
-	public $favoriteProgramm;
+	public float $memorySize;
+	public float $frequencyCpu;
+	public string $favoriteProgramm;
 
 	public function __construct(float $memorySize, float $frequencyCpu, string $favoriteProgramm)
 	{

@@ -41,18 +41,21 @@ class Publisher
 	}
 
 	public function publish(Article $article)
-	{
+	{	
+		// содержимое статьи
+		$content = $article->content;
+		
 		// если возраст до 18 то проводим цензуру содержимого статьи
 		if ($article->ageCategory < 18) {
-			$article->content = $this->censor->censor($article->content);
+			$content = $this->censor->censor($article->content);
 		}
 
-		// отправляем публикацию в интернет блог 'BBC'
-		$this->send($article->name, $article->content, 'BBC');
+		// отправляем публикацию в интернет блог
+		$this->send($article->name, $content, 'Блог');
 
 		// если у статьи есть картинка то отправляем также в instagram
 		if ($article->isImage) {
-			$this->send($article->name, $article->content, 'Instagram');
+			$this->send($article->name, $content, 'Instagram');
 		}
 	}
 }

@@ -2,7 +2,7 @@
 
 class Fork
 {
-	public $numberOfTeeth;
+	public int $numberOfTeeth;
 
 	public function __construct(int $numberOfTeeth)
 	{
@@ -12,7 +12,7 @@ class Fork
 
 class Cup
 {
-	public $volume;
+	public int $volume;
 
 	public function __construct(int $volume)
 	{
@@ -22,7 +22,7 @@ class Cup
 
 class Table
 {
-	public $color;
+	public string $color;
 
 	public function __construct(string $color)
 	{

@@ -48,27 +48,20 @@ class BasketPosition
 
 class Basket
 {
-	public array $products = [];
+	public array $positions = [];
 	// public int $sum = 0;
 
 	// добавляет товар в корзину
 	public function addProduct(Product $product, $quantity)
 	{
-		$this->products[] = new BasketPosition($product, $quantity);
-	}
-
-	public function print()
-	{
-		echo "<pre>";
-		var_dump($this->products);
-		echo "</pre>";
+		$this->positions[] = new BasketPosition($product, $quantity);
 	}
 
 	// возвращает стоимость товаров в корзине
 	public function getPrice(): int
 	{
 		$sum = 0;
-		foreach ($this->products as $product) {
+		foreach ($this->positions as $product) {
 			$sum += $product->product->getPrice();
 		}
 
@@ -78,7 +71,7 @@ class Basket
 	// выводит информацию о корзине
 	public function describe()
 	{
-		foreach ($this->products as $product) {
+		foreach ($this->positions as $product) {
 			echo $product->product->getName() . ' - ' . $product->product->getPrice() . ' - ' . $product->getQuantity() . ' ';
 		}
 	}
@@ -87,7 +80,7 @@ class Basket
 
 class Order
 {
-	public Basket $basket;
+	private Basket $basket;
 
 	public function __construct(Basket $basket)
 	{
@@ -97,7 +90,7 @@ class Order
 	// возращает стоимость товаров заказа, которая складывается из цены корзины + 300 за доставку
 	public function getPrice(): int
 	{
-		return $this->basket->getPrice() + 300;
+		return $this->getBasket()->getPrice() + 300;
 	}
 
 	public function getBasket(): Basket
