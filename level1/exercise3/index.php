@@ -2,8 +2,8 @@
 
 class Car
 {
-	public $name;
-	public $price;
+	public string $name;
+	public int $price;
 
 	public function __construct(string $name, int $price)
 	{
