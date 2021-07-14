@@ -36,10 +36,7 @@ class Library extends SecretObject
 
 	protected function agentLevelHasAccess(int $agentLevelHasAccess): bool
 	{
-		if ($agentLevelHasAccess >= 1) {
-			return true;
-		}
-		return false;
+		return $agentLevelHasAccess;
 	}
 
 	protected function getSecretInformation(): string

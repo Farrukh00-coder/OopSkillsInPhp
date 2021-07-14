@@ -89,10 +89,7 @@ class Chef extends Cook
 {
 	protected function getOrderPrice()
 	{
-		$price = 0;
-		foreach (parent::getOrder() as $value) {
-			$price += $value->getPrice() * 5;
-		}
-		return $price;
+		$price = parent::getOrderPrice();
+		return $price * 5;
 	}
 }
