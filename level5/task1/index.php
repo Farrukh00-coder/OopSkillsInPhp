@@ -37,13 +37,12 @@ function multiply($number1, $number2)
 }
 
 
-$subtraction = new Level5\Task1\Calculator\Subtraction();
 
 $callbacks = [
 	(function ($number1, $number2) {
 		return $number1 + $number2;
 	}),
-	[$subtraction, 'subtraction'],
+	[new Level5\Task1\Calculator\Subtraction(), 'subtraction'],
 	'multiply',
 	[Level5\Task1\Calculator\Division::class, 'division'],
 ];

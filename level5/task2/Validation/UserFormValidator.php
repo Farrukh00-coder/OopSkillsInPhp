@@ -7,7 +7,7 @@ class UserFormValidator
 	public function validate($data)
 	{	
 		if (empty($data['name'])) {
-			throw new \Exception('Введите имя');
+			throw new \Exception('Имя не указано');
 		}
 
 		if ($data['age'] < 18) {
@@ -15,7 +15,9 @@ class UserFormValidator
 		}
 
 		if (empty($data['email']) && !filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
-			throw new \Exception('Введите email');
+			throw new \Exception('Некорректный emails');
 		}
+
+		return true;
 	}
 }

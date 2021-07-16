@@ -13,6 +13,6 @@ class User
 
 	public function save($data)
 	{
-		return ((boolean) rand(0, 1));
+		return (bool)rand(0, 1);
 	}
 }

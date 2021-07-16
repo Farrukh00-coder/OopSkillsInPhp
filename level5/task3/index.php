@@ -36,7 +36,9 @@ if (! empty($_POST)) {
 		$user = new Level5\Task3\Validation\User();
 		$user->load($_POST['id']);
 		$success = (new Level5\Task3\Validation\UserFormValidator())->validate($_POST);
-		$user->save($_POST);
+		if (! $user->save($_POST)) {
+			throw new Exception('Непредвиденная ошибка');
+		}
 	} catch (Exception $e) {
 		$error = $e->getMessage();
 	}
@@ -50,7 +52,9 @@ if (! empty($_POST)) {
 	<title>Валидация</title>
 </head>
 <body>
-	<p style="color: red"><?=($success !== null && isset($error)) ? $error : ''?></p>
+	<?php if (isset($error)) {?>
+		<p style="color: red">Ошибка: <?=$error?></p>
+	<?php }?>
 	<form action='/oop/level5/task3/' method="POST">
 		<label>ID:</label>
 		<input type="text" name="id"><br><br>

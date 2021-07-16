@@ -47,7 +47,9 @@ if (! empty($_POST)) {
 	<title>Валидация</title>
 </head>
 <body>
-	<p style="color: red"><?=($success !== null && isset($error)) ? $error : ''?></p>
+	<?php if (isset($error)) {?>
+		<p style="color: red">Ошибка: <?=$error?></p>
+	<?php }?>
 	<form action='/oop/level5/task2/' method="POST">
 		<label>Имя:</label>
 		<input type="text" name="name"><br><br>
