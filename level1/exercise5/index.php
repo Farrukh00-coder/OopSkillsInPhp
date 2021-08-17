@@ -62,7 +62,7 @@ class Basket
 	{
 		$sum = 0;
 		foreach ($this->positions as $product) {
-			$sum += $product->product->getPrice();
+			$sum += $product->getProduct()->price * $product->getQuantity();
 		}
 
 		return $sum;
@@ -72,7 +72,7 @@ class Basket
 	public function describe()
 	{
 		foreach ($this->positions as $product) {
-			echo $product->product->getName() . ' - ' . $product->product->getPrice() . ' - ' . $product->getQuantity() . ' ';
+			echo $product->getProduct()->name . ' - ' . $product->getProduct()->price . ' - ' . $product->getQuantity() . ' ';
 		}
 	}
 }
